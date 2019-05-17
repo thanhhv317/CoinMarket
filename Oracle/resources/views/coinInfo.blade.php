@@ -205,6 +205,7 @@
                     <tbody>
                         <?php $i=1; ?>
                         @foreach ($history as $value)
+                        @if($i<=30)
                         <tr class="table-flag-blue">
                             <th>{!! $i !!}</th>
                             <td>$ {!! $value->volume_24h !!}</td> 
@@ -227,6 +228,7 @@
                             @endif 
                             <td>{!! $value->last_updated !!}</td> 
                         </tr>
+                        @endif
                         <?php $i++; ?>
                         @endforeach
                     </tbody>
@@ -264,9 +266,11 @@
     <?php 
         $date = explode ( '-' , $value->last_updated);
         $day = explode ( ' ' , $date[2]);
+        $time = explode ( ':' , $day[1]);
+        
     ?>
         dataPoints.push({
-            x: new Date({!! $date[0] .','. $date[1] .','.$day[0] !!}),           
+            x: new Date({!! $date[0] .','. $date[1] .','.$day[0].','.$time[0].','.$time[1].','.$time[2] !!}),           
             y: {!! $value->market_cap !!}
         });
     @endforeach

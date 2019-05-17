@@ -2,7 +2,7 @@
 @section('content')
 <section class="content-header">
 	<h1>
-		Top 100 loại tiền điện tử hàng đầu
+		Top 100 Các loại tiền điện tử theo vốn hóa thị trường
 		<small>Coin Market</small>
 	</h1>
 	<ol class="breadcrumb">
@@ -16,9 +16,10 @@
 		<div class="col-xs-12">
 			<div class="box">
                 <div class="box-header">
-                  <h3>&nbsp;<i class="fa fa-usd"></i> TOP 100 COIN</h3>
+                  <h3>&nbsp;<i class="fa fa-usd"></i> TOP 100 TIỀN ĐIỆN TỬ</h3>
                 </div><!-- /.box-header -->
                 <hr>
+                <div class="table-responsive">
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
@@ -30,7 +31,7 @@
             						<th class="text-center" >Volume (24h)</th>
             						<th >Circulating Supply</th>
             						<th >Change (24h)</th>
-            						<th >Price Graph(7d)</th>
+            						<!-- <th >Price Graph(7d)</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -61,9 +62,9 @@
                             @endif
                             
                           </td>
-                          <td id='price_graph_7d'>
+                          <!-- <td id='price_graph_7d'>
                             <canvas id="canvas" width="160" height="80"></canvas>
-                          </td>
+                          </td> -->
                           
                            <?php $stt++; ?>               
                         </tr>
@@ -74,6 +75,7 @@
                     </tfoot>
                   </table>
                 </div><!-- /.box-body -->
+              </div>
               </div><!-- /.box -->
     	</div><!-- /.col -->
   	</div><!-- /.row -->
