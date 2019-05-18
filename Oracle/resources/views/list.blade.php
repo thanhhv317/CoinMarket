@@ -80,6 +80,26 @@
     	</div><!-- /.col -->
   	</div><!-- /.row -->
 </section><!-- /.content -->
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+                <div class="box-header">
+                  <h3>&nbsp;<i class="fa fa-usd"></i> CHART OF TOP 4 COIN</h3>
+                </div><!-- /.box-header -->
+                <hr>
+                <div class="table-responsive">
+                <div class="box-body">
+                  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                </div><!-- /.box-body -->
+              </div>
+              </div><!-- /.box -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->
+
+
 <script>
 var canvas = document.getElementById('canvas'),
   context = canvas.getContext('2d'),
@@ -115,5 +135,48 @@ var canvas = document.getElementById('canvas'),
 
   }
 </script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+  exportEnabled: true,
+  animationEnabled: true,
+  title:{
+    text: "COINMARKET CAP - RANK"
+  },
+  legend:{
+    cursor: "pointer",
+    itemclick: explodePie
+  },
+  data: [{
+    type: "pie",
+    showInLegend: true,
+    toolTipContent: "{name}: <strong>{y}%</strong>",
+    indexLabel: "{name} - {y}%",
+    dataPoints: [
+      @foreach($top4 as $key=> $item)
+     
+      {
+       y: {!! $item->volume_24h !!} , name: "{!! $item->name !!}"
+      },
+      @endforeach
+    ]
+  }]
+});
+chart.render();
+}
+
+function explodePie (e) {
+  if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+    e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+  } else {
+    e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+  }
+  e.chart.render();
+
+}
+</script>
+
 
 @endsection()

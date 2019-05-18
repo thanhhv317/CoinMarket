@@ -31,6 +31,7 @@ Route::group(['prefix'=>'coinMarket'],function(){
 	Route::group(['prefix'=>'quote'],function(){
 		Route::get('list',['as'=>'coinMarket.quote.list','uses'=>'QuoteController@getData']);
 		Route::get('api',['as'=>'coinMarket.quote.api','uses'=>'QuoteController@getApi']);
+		Route::get('test',['as'=>'coinMarket.quote.test','uses'=>'QuoteController@testAPI']);
 		
 	});
 });

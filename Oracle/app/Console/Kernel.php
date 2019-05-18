@@ -27,14 +27,14 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('inspire')
-            ->everyFiveMinutes()
-            ->appendOutputTo('C:\inspire.txt');
+        // $schedule->command('inspire')
+        //     ->everyFiveMinutes()
+        //     ->appendOutputTo('C:\inspire.txt');
 
 
-        $schedule->call(function(){
-            print_r('hello world');
-        })->everyFiveMinutes();
+        // $schedule->call(function(){
+        //     print_r('hello world');
+        // })->everyFiveMinutes();
 
         $schedule->call(function(){
             $url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest';
